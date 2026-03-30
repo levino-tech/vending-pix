@@ -19,6 +19,7 @@ app.add_middleware(
 )
 
 PRODUTOS = {
+    0.5:  "Teste",
     3.0:  "Chocolate",
     5.0:  "Bala",
     6.0:  "Drops",
@@ -63,7 +64,7 @@ async def webhook(request: Request):
             f"https://api.mercadopago.com/v1/payments/{payment_id}",
             headers={"Authorization": f"Bearer {TOKEN}"}
         )
-    
+
     data = response.json()
     valor = data.get("transaction_amount")
     status_pag = data.get("status")
